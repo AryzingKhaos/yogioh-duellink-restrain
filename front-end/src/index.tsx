@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import {Router, Route, Routes, HashRouter} from 'react-router-dom';
 import Home from './pages/Home';
 import './base.css'
+import 'antd/dist/antd.min.css';
 
 const AppRoutes = () => {
   return (

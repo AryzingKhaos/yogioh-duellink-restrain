@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "deckName": "",
+    "deckSkill": "",
+    "gameResult": "win",
+    "operationErrorNumber": 0,
+    "id": 0,
+    "modelId": 0,
+    "updateTime": 1660059387000
+  }
+]

@@ -8,6 +8,8 @@ const util = require('./util/util.js');
 const initApp = require('./network');
 const app = initApp();
 
+let modelId = 0;
+
 const successJsonFunc = (data) => ({
   code: 0,
   data: data,
@@ -21,17 +23,13 @@ const failJsonFunc = (code, data, msg) =>
     msg: msg,
   });
 
-const configRequest = (req, res) => {
+const filterDelete = (array) => array.filter((item) => !item.isDelete);
+
+const CrossDomain = (req, res) => {
   //设置允许跨域请求
   const reqOrigin = req.header('origin');
   // console.log(reqOrigin);
   console.log(req.url);
-
-  //获取返回的url对象的query属性值
-  const arg = url.parse(req.url).query;
-  //将arg参数字符串反序列化为一个对象
-  const params = querystring.parse(arg);
-
   if (reqOrigin != undefined > -1) {
     //设置允许 http://localhost:3000 这个域响应
     // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -42,11 +40,24 @@ const configRequest = (req, res) => {
       'Content-Type,Content-Length, Authorization, Accept,X-Requested-With'
     );
   }
+};
+
+const configRequestGet = (req, res) => {
+  CrossDomain(req, res);
+  //获取返回的url对象的query属性值
+  const arg = url.parse(req.url).query;
+  //将arg参数字符串反序列化为一个对象
+  const params = querystring.parse(arg);
   return params;
 };
 
+const configRequestPost = (req, res) => {
+  CrossDomain(req, res);
+  return req.body;
+};
+
 app.get('/read_restrain_card', (req, res) => {
-  const params = configRequest(req, res);
+  const params = configRequestGet(req, res);
   file
     .readRestrainCardInfo()
     .then((dataObj) => {
@@ -58,7 +69,7 @@ app.get('/read_restrain_card', (req, res) => {
 });
 
 app.get('/read_restrain_deck', (req, res) => {
-  const params = configRequest(req, res);
+  const params = configRequestGet(req, res);
   file
     .readRestrainDeckInfo()
     .then((dataObj) => {
@@ -70,12 +81,11 @@ app.get('/read_restrain_deck', (req, res) => {
 });
 
 app.get('/read_history_duel', (req, res) => {
-  const params = configRequest(req, res);
+  const params = configRequestGet(req, res);
   file
     .readHistoryDuelInfo()
     .then((dataObj) => {
-      const returnData = dataObj.filter((item) => !item.isDelete);
-      res.send(successJsonFunc(returnData));
+      res.send(successJsonFunc(filterDelete(dataObj)));
     })
     .catch((err) => {
       res.send(failJsonFunc(err.errno, err, err));
@@ -87,21 +97,84 @@ app.get('/read_history_duel', (req, res) => {
  * duelInfo: 对战信息
  */
 app.post('/add_history_duel', (req, res) => {
-  const params = configRequest(req, res);
-  const duelInfoOne = params.duelInfo;
+  const params = configRequestPost(req, res);
+  let duelInfoOne = params.duelInfo;
   file
-    .readHistoryDuelInfo((dataObj) => {
-      const maxId = util.findMaxId(dataObj);
+    .readHistoryDuelInfo()
+    .then(async (dataObj) => {
+      return {
+        configObject: await file.readConfigData(),
+        dataObj,
+      };
+    })
+    .then(({ configObject, dataObj }) => {
+      const { modelId } = configObject;
+      const maxId = util.findMaxId(dataObj.map((item) => item.id));
       duelInfoOne = {
         ...duelInfoOne,
         id: maxId + 1,
+        modelId: modelId,
         updateTime: Date.parse(new Date()),
       };
+      console.log('duelInfoOne', duelInfoOne); // todos
       dataObj.push(duelInfoOne);
-      return file.writeHistoryDuelInfo(dataObj);
+      console.log('dataObj', dataObj); // todos
+      file.writeHistoryDuelInfo(dataObj);
+      return filterDelete(dataObj);
+    })
+    .then((dataObj) => {
+      res.send(successJsonFunc(dataObj));
+    })
+    .catch((err) => {
+      res.send(failJsonFunc(err.errno, err, err));
+    });
+});
+
+/**
+ * get
+ * 添加新的决斗模块。模块是用于数据分析的单元
+ */
+// todos 可以写成async/await形式的
+app.get('/add_duel_new_model', (req, res) => {
+  configRequestGet(req, res);
+  file
+    .readConfigData()
+    .then(async (configObject) => {
+      console.log('configObject', configObject); // todos
+      const { modelId } = configObject;
+      return file.writeConfigData({
+        ...configObject,
+        modelId: modelId + 1,
+      });
     })
     .then(() => {
       res.send(successJsonFunc(null));
+    });
+});
+
+/**
+ * post
+ * deleteId: 删除的信息id
+ */
+app.post('/delete_history_duel', (req, res) => {
+  const params = configRequestPost(req, res);
+  const deleteId = params.deleteId;
+  console.log('deleteId', deleteId); // todos
+  file
+    .readHistoryDuelInfo()
+    .then((dataObj) => {
+      console.log('dataObj1', dataObj); // todos
+      let duelInfo = dataObj.find((item) => item.id == deleteId);
+      if (!duelInfo)
+        res.send(failJsonFunc(1001, null, `没找到目标id: ${deleteId}`));
+      duelInfo.isDelete = true;
+      console.log('duelInfo', duelInfo); // todos
+      console.log('dataObj', dataObj); // todos
+      file.writeHistoryDuelInfo(dataObj);
+      return filterDelete(dataObj);
+    })
+    .then((dataObj) => {
+      res.send(successJsonFunc(dataObj));
     })
     .catch((err) => {
       res.send(failJsonFunc(err.errno, err, err));
@@ -112,29 +185,13 @@ app.post('/add_history_duel', (req, res) => {
  * post
  * deleteId: 删除的信息id
  */
-app.post('/delete_history_duel', (req, res) => {
-  const params = configRequest(req, res);
-  const deleteId = params.deleteId;
-  file
-    .readHistoryDuelInfo((dataObj) => {
-      let duelInfo = dataObj.find((item) => item.id === deleteId);
-      if (!duelInfo)
-        res.send(failJsonFunc(1001, null, `没找到目标id: ${deleteId}`));
-      duelInfo = {
-        ...duelInfo,
-        isDelete: true,
-      };
-      return file.writeHistoryDuelInfo(dataObj);
-    })
-    .then(() => {
-      res.send(successJsonFunc(null));
-    })
-    .catch((err) => {
-      res.send(failJsonFunc(err.errno, err, err));
-    });
+app.post('/clear_delete_history_duel', async (req, res) => {
+  configRequestPost(req, res);
+  let historyArray = await file.readHistoryDuelInfo();
+  historyArray = historyArray.filter((item) => !item.isDelete);
+  await file.writeHistoryDuelInfo(historyArray);
+  res.send(successJsonFunc(null));
 });
-
-// todos remove_history_delete_duel 删除isDelete标记为true的所有项
 
 /**
  * post
@@ -142,7 +199,7 @@ app.post('/delete_history_duel', (req, res) => {
  * changeDuelInfo: 修改的内容
  */
 app.post('/change_history_duel', (req, res) => {
-  const params = configRequest(req, res);
+  const params = configRequestGet(req, res);
   const targetId = params.targetId;
   const changeDuelInfo = params.duelInfo;
   // todos changeDuelInfo的内容要校验

@@ -38,7 +38,7 @@
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.9.0",
-    "antd": "^2.13.6",
+    "antd": "^4.22.4",
     "axios": "^0.18.0",
     "create-react-app": "^1.5.2",
     "qs": "^6.6.0",

@@ -1,0 +1,27 @@
+.big-box{
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+.line-box{
+  display: flex;
+  width: 100%;
+}
+.column-box{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.cell-box{
+  padding: 20px;
+  width: 50%;
+  border-bottom: #1890ff 1px solid;
+  align-items: center;
+}
+.cell-box p{
+  margin: 0;
+}
+.no-border{
+  border: none;
+}

@@ -2,16 +2,16 @@ import { FC, memo, useCallback, useEffect, useState } from 'react';
 import { DuelRecord } from '../constant/interface';
 import requestUtil from '../server';
 import DuelRecordOne from './duel-record-one';
+import { useGlobalData } from '../hooks/useGlobalData';
+import { pureReverse } from '../utils/utils';
 
-interface Props {
-  historyDuelArray: DuelRecord[];
-  setHistoryDuelArray: any;
-};
+import './duel-record-one.css';
 
-const HistoryDuelList: FC<Props> = ({
-  historyDuelArray,
-  setHistoryDuelArray
-}) => {
+interface Props {};
+
+const HistoryDuelList: FC<Props> = () => {
+
+  const { historyDuelArray, setHistoryDuelArray } = useGlobalData();
 
   useEffect(() => {
     requestUtil.getHistoryDuel().then(res => {
@@ -32,22 +32,22 @@ const HistoryDuelList: FC<Props> = ({
       <thead></thead>
       <tbody>
         <tr className='DuelRecordOne'>
-          <td>id</td>
+          <td className='id-style'>id</td>
           <td>我的卡组</td>
           <td>对手卡组</td>
           <td>对手卡组</td>
           <td>结果</td>
           <td>失误</td>
-          <td>模块ID</td>
+          <td>modelId</td>
           <td>时间</td>
           <td>备注</td>
           <td>功能</td>
         </tr>
-        {historyDuelArray.reverse().map((item, index) => <DuelRecordOne
+        {pureReverse(historyDuelArray).map((item, index) => <DuelRecordOne
           {...item}
           key={item.id}
           remarks={item.remarks}
-          isDivision={historyDuelArray.reverse()[index+1] && item.modelId !== historyDuelArray.reverse()[index+1].modelId ? true : false }
+          isDivision={pureReverse(historyDuelArray)[index+1] && item.modelId !== pureReverse(historyDuelArray)[index+1].modelId ? true : false }
           onChange={duelRecordOneChange}
           onDelete={duelRecordOneDelete}
         />)}

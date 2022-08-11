@@ -27,3 +27,12 @@ export const formatTime = (date: Date, fmt: string) => {
       );
   return fmt;
 };
+
+export const removeDuplicate = (array: string[] | number[]) => {
+  // @ts-ignore
+  return Array.from(new Set(array));
+};
+
+export const isDef = (val: any) => val !== undefined && val !== null;
+
+export const pureReverse = (array: any[]) => [...array].reverse();

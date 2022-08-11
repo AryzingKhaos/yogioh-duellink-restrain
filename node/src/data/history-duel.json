@@ -1,11 +1,1 @@
-[
-  {
-    "deckName": "",
-    "deckSkill": "",
-    "gameResult": "win",
-    "operationErrorNumber": 0,
-    "id": 0,
-    "modelId": 0,
-    "updateTime": 1660059387000
-  }
-]
+[{"myDeckName":"小角龙","deckName":"黑魔导","deckSkill":"羁绊之力","gameResult":"win","operationErrorNumber":0,"id":0,"modelId":0,"updateTime":1660235703000},{"myDeckName":"黑魔导","deckName":"永火","deckSkill":"永火业火","gameResult":"win","operationErrorNumber":0,"id":1,"modelId":2,"updateTime":1660238237000},{"myDeckName":"黑魔导","deckName":"黑羽","deckSkill":"未知","gameResult":"win","operationErrorNumber":0,"id":2,"modelId":2,"updateTime":1660238835000},{"myDeckName":"黑魔导","deckName":"古代机械","deckSkill":"中世纪机械","gameResult":"win","operationErrorNumber":0,"id":3,"modelId":2,"updateTime":1660239090000},{"myDeckName":"黑魔导","deckName":"核成","deckSkill":"未知","gameResult":"win","operationErrorNumber":0,"id":4,"modelId":2,"updateTime":1660239547000},{"myDeckName":"黑魔导","deckName":"小角龙","deckSkill":"化学反应","gameResult":"win","operationErrorNumber":0,"id":5,"modelId":3,"updateTime":1660240137000},{"myDeckName":"黑魔导","deckName":"炎星","deckSkill":"宝玉之力","gameResult":"win","operationErrorNumber":0,"id":6,"modelId":3,"updateTime":1660240527000},{"myDeckName":"黑魔导","deckName":"小角龙","deckSkill":"化学反应","gameResult":"win","operationErrorNumber":0,"id":7,"modelId":3,"updateTime":1660240960000},{"myDeckName":"永火","deckName":"小角龙","deckSkill":"化学反应","gameResult":"lose","operationErrorNumber":0,"id":8,"modelId":3,"updateTime":1660241183000},{"myDeckName":"永火","deckName":"真红眼","deckSkill":"心灵扫描","gameResult":"win","operationErrorNumber":0,"id":9,"modelId":3,"updateTime":1660241792000},{"myDeckName":"永火","deckName":"黑魔导","deckSkill":"仪式大师","gameResult":"lose","operationErrorNumber":0,"id":10,"modelId":3,"updateTime":1660242301000}]

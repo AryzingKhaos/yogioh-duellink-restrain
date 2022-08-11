@@ -1,8 +1,10 @@
 import { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import deck from '../constant/deck';
+import deckSkillDatabase from '../constant/deck-skill-database';
 import { DuelRecord, GameResult, mainColor } from '../constant/interface';
 import { Select, Button } from 'antd';
 import requestUtil from '../server';
+import { useGlobalData } from '../hooks/useGlobalData';
+import { removeDuplicate } from '../utils/utils';
 
 const { Option } = Select;
 
@@ -11,22 +13,23 @@ const SELECT_WIDTH = 90;
 
 const marginLeftStyle = {marginLeft: '20px'};
 
-interface Props {
-  historyDuelArray: DuelRecord[];
-  setHistoryDuelArray: any;
-};
+interface Props {};
 
-const RecordTool: FC<Props> = ({
-  historyDuelArray,
-  setHistoryDuelArray,
-}) => {
-  const deckList = useRef(Object.keys(deck));
+const RecordTool: FC<Props> = () => {
+  const deckList = useRef(Object.keys(deckSkillDatabase));
   const [deckSkillArray, setDeckSkillArray] = useState<string[]>([]);
-  const [myDeckName, setMyDeckName] = useState<string>('');
-  const [deckName, setDeckName] = useState<string>('');
   const [deckSkill, setDeckSkill] = useState<string>('');
   const [gameResult, setGameResult] = useState<GameResult>(GameResult.WIN);
   const [operationErrorNumber, setOperationErrorNumber] = useState<number>(0);
+
+  const {
+    historyDuelArray,
+    setHistoryDuelArray,
+    myDeckName,
+    setMyDeckName,
+    deckName,
+    setDeckName
+  } = useGlobalData();
 
   const myDeckChange = useCallback((selectMyDeckName: string) => {
     setMyDeckName(selectMyDeckName);
@@ -34,11 +37,10 @@ const RecordTool: FC<Props> = ({
 
   const deckChange = useCallback((selectDeckName: string) => {
     setDeckName(selectDeckName);
-    const defaultSkill = deck[selectDeckName].defaultSkill;
-    const otherSkill = deck[selectDeckName].otherSkill;
-    const skillArray = [defaultSkill].concat(otherSkill);
+    const { defaultSkill, otherSkill, allSkill = [] } = deckSkillDatabase[selectDeckName]
+    const skillArray = [defaultSkill].concat(otherSkill).concat(allSkill);
     setDeckSkill(defaultSkill);
-    setDeckSkillArray(skillArray);
+    setDeckSkillArray(removeDuplicate(skillArray));
   }, []);
 
   const onSkillChange = useCallback((selectSkill: string) => {
@@ -113,7 +115,7 @@ const RecordTool: FC<Props> = ({
       <Select value={deckSkill} onChange={onSkillChange} style={{ width: 120 }}>
         {
           deckSkillArray.map((item, index) => {
-            return (<Option key={item} value={item}>{item}</Option>);
+            return (<Option key={index} value={item}>{item}</Option>);
           })
         }
       </Select>

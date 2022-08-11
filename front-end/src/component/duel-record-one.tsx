@@ -3,7 +3,7 @@ import { DuelRecord, GameResult, mainColor } from '../constant/interface';
 import { formatTime } from '../utils/utils';
 import { Button } from 'antd';
 
-import './record-tool.css';
+import './duel-record-one.css';
 
 interface Props extends DuelRecord{
   isDivision?: boolean;
@@ -26,7 +26,7 @@ const DuelRecordOne: FC<Props> = ({
   onDelete,
 }) => {
   return <tr className='DuelRecordOne' style={isDivision ? {borderBottom: `${mainColor} 2px solid`} : {}}>
-    <td>{id}</td>
+    <td className='id-style'>{id}</td>
     <td>{myDeckName}</td>
     <td>{deckName}</td>
     <td>{deckSkill}</td>

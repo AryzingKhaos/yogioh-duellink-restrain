@@ -90,9 +90,10 @@ const Analysis: FC<Props> = ({}) => {
     }, []).sort((a, b) => b.frequency - a.frequency);
   }, [calcHistoryArray]);
 
+
   const analysisHistoryFear = useMemo(() => {
     return analysisHistoryFrequency.map(item => {
-      return deckFear(item.deckName);
+      return new Array(item.frequency).fill(null).map(_ => deckFear(item.deckName)).flat();
     }).flat().reduce((arr: FearHistoryArrayOne[], item: any[]) => {
       const result = arr.find((_item: FearHistoryArrayOne) => item[0] === _item.fearAttribute);
       if (!result) arr.push({
@@ -103,6 +104,8 @@ const Analysis: FC<Props> = ({}) => {
       return arr;
     }, []).sort((a, b) => b.score - a.score);
   }, [analysisHistoryFrequency]);
+
+  console.log('analysisHistoryFear', analysisHistoryFear);
 
   return <div className='big-box'>
     <div className="line-box">

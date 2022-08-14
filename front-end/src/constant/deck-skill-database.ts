@@ -34,8 +34,8 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     otherSkill: ['羁绊之力'],
   },
   黑羽: {
-    defaultSkill: '神鹰狩猎场',
-    otherSkill: ['攀登高峰', '羁绊之力'],
+    defaultSkill: '攀登高峰',
+    otherSkill: ['神鹰狩猎场', '羁绊之力'],
   },
   古代机械: {
     defaultSkill: '中世纪机械',

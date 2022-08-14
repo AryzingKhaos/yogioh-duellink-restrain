@@ -11,6 +11,6 @@
     "strict": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "**/*.tsx"],
   "types": ["chrome"]
 }

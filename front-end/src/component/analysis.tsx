@@ -109,6 +109,12 @@ const Analysis: FC<Props> = ({}) => {
 
   return <div className='big-box'>
     <div className="line-box">
+      <div className="cell-box img-cell-box">
+        对手卡组可能卡：
+        <div className="img-box">
+          <img src={`../img/${deckName}可能卡.png`} alt="" />
+        </div>
+      </div>
       <div className="cell-box">
         我的卡组害怕：
         {deckFear(myDeckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
@@ -117,6 +123,7 @@ const Analysis: FC<Props> = ({}) => {
         对手卡组害怕：
         {deckFear(deckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
       </div>
+      
     </div>
     <div className="line-box">
       <div className="column-box">

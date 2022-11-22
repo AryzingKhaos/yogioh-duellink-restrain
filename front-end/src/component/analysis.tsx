@@ -4,6 +4,7 @@ import requestUtil from '../server';
 import DuelRecordOne from './duel-record-one';
 import { useGlobalData } from '../hooks/useGlobalData';
 import { effectRestrainDeck, deckFear } from '../constant/effect-restrain-deck';
+// import { deckCountermeasure } from '../constant/deck-countermeasures';
 import { Select } from 'antd';
 import { isDef, pureReverse } from '../utils/utils';
 
@@ -59,6 +60,10 @@ const Analysis: FC<Props> = ({}) => {
   } = useGlobalData();
 
   const [limit, setLimit] = useState<number>(0);
+
+  // useEffect(() => {
+  //   console.log('deckCountermeasure', deckCountermeasure);
+  // }, [deckCountermeasure]);
 
   const analysisSessionsChangeHandler = useCallback((value: number) => {
     setLimit(value);

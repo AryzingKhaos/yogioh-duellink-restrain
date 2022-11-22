@@ -31,7 +31,7 @@ const DuelRecordOne: FC<Props> = ({
     <td>{deckName}</td>
     <td>{deckSkill}</td>
     <td>{gameResult === GameResult.WIN ? <span style={{color: 'green'}}>{'胜'}</span> : <span style={{color: 'red'}}>{'负'}</span>}</td>
-    <td>{operationErrorNumber}</td>
+    <td><span style={{color: operationErrorNumber > 0 ? 'red' : 'green'}}>{operationErrorNumber}</span></td>
     <td>{modelId}</td>
     <td style={{width: 150}}>{updateTime ? formatTime(new Date(updateTime), 'YY-MM-dd hh:mm:ss') : 'no time'}</td>
     <td>{remarks}</td>

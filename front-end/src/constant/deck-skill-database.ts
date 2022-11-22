@@ -13,6 +13,10 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '羁绊之力',
     otherSkill: ['注定一抽'],
   },
+  破坏剑: {
+    defaultSkill: '抽卡预感：低星',
+    otherSkill: ['注定一抽', '无尽陷阱地狱', '羁绊之力'],
+  },
   永火: {
     defaultSkill: '永火业火',
     otherSkill: ['虚无的波动'],
@@ -33,14 +37,6 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '心灵扫描',
     otherSkill: ['羁绊之力'],
   },
-  黑羽: {
-    defaultSkill: '攀登高峰',
-    otherSkill: ['神鹰狩猎场', '羁绊之力'],
-  },
-  古代机械: {
-    defaultSkill: '中世纪机械',
-    otherSkill: [],
-  },
   骑兵: {
     defaultSkill: '强攻压制',
     otherSkill: ['羁绊之力', '融合大师', '融合时刻！'],
@@ -48,6 +44,14 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
   不死: {
     defaultSkill: '墓穴大军',
     otherSkill: ['放马过来！', '羁绊之力'],
+  },
+  黑羽: {
+    defaultSkill: '攀登高峰',
+    otherSkill: ['神鹰狩猎场', '羁绊之力'],
+  },
+  古代机械: {
+    defaultSkill: '中世纪机械',
+    otherSkill: [],
   },
   白龙: {
     defaultSkill: '强攻压制',

@@ -120,14 +120,15 @@ const Analysis: FC<Props> = ({}) => {
           <img src={`../img/${deckName}可能卡.png`} alt="" />
         </div>
       </div>
-      <div className="cell-box">
+      {/* 这里暂时注释掉了，想明白怎么解释卡组之后再放开吧 */}
+      {/* <div className="cell-box">
         我的卡组害怕：
         {deckFear(myDeckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
       </div>
       <div className="cell-box">
         对手卡组害怕：
         {deckFear(deckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
-      </div>
+      </div> */}
       
     </div>
     <div className="line-box">

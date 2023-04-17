@@ -43,6 +43,10 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '抽卡预感：低星',
     otherSkill: ['怪兽变身：进化', '羁绊之力', '心灵扫描', '注定一抽'],
   },
+  妖仙兽: {
+    defaultSkill: '羁绊之力',
+    otherSkill: ['注定一抽', '心灵扫描'],
+  },
   机巧: {
     defaultSkill: '强攻压制',
     otherSkill: ['抽卡预感：低星', '羁绊之力', '心灵扫描'],
@@ -65,8 +69,8 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
   },
   // T3
   光暗: {
-    defaultSkill: '生命值增加a',
-    otherSkill: ['注定一抽', '墓穴大军', '墓地封印', '凡人的局限'],
+    defaultSkill: '注定一抽',
+    otherSkill: ['生命值增加a', '墓穴大军', '墓地封印', '凡人的局限'],
   },
   流星龙: {
     defaultSkill: '流星之路',
@@ -85,8 +89,8 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     otherSkill: ['虚无的波动'],
   },
   真红眼: {
-    defaultSkill: '心灵扫描',
-    otherSkill: ['羁绊之力'],
+    defaultSkill: '真红眼轮盘',
+    otherSkill: ['心灵扫描', '羁绊之力'],
   },
   黑魔导: {
     defaultSkill: '羁绊之力',

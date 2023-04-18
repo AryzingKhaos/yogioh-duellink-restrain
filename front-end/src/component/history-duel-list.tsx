@@ -28,14 +28,14 @@ const HistoryDuelList: FC<Props> = () => {
   }, []);
 
   return (
-    <table border={0}>
+    <table border={0} className='HistoryRecord'>
       <thead></thead>
       <tbody>
         <tr className='DuelRecordOne'>
-          <td className='id-style'>id</td>
-          <td>我的卡组</td>
-          <td>对手卡组</td>
-          <td>对手卡组</td>
+          <td>id</td>
+          <td style={{width: 80}}>我的卡组</td>
+          <td style={{width: 90}}>对手卡组</td>
+          <td style={{width: 90}}>对手技能</td>
           <td>结果</td>
           <td>失误</td>
           <td>modelId</td>

@@ -6,22 +6,50 @@ interface deckAttribute {
 
 const deckSkillDatabase: Record<string, deckAttribute> = {
   // T1
+  水晶机巧: {
+    defaultSkill: '化学反应',
+    otherSkill: ['羁绊之力', '心灵扫描', '抽卡预感：高星', '注定一抽', '神秘深渊'],
+  },
+  黑魔导: {
+    defaultSkill: '羁绊之力',
+    otherSkill: ['注定一抽'],
+  },
+  电子龙: {
+    defaultSkill: '电子流派',
+    otherSkill: ['注定一抽'],
+  },
+  六武众: {
+    defaultSkill: '羁绊之力',
+    otherSkill: ['注定一抽'],
+  },
+  英雄: {
+    defaultSkill: '伤痕累累的英雄',
+    otherSkill: ['注定一抽', '羁绊之力', '英雄闪耀！'],
+  },
+  妖仙兽: {
+    defaultSkill: '羁绊之力',
+    otherSkill: ['注定一抽', '心灵扫描'],
+  },
+  // T2
   新宇侠: {
     defaultSkill: '新生宇宙！',
     otherSkill: ['心灵扫描', '羁绊之力'],
   },
-  水晶机巧: {
-    defaultSkill: '羁绊之力',
-    otherSkill: ['心灵扫描', '抽卡预感：高星', '注定一抽'],
+  TG: {
+    defaultSkill: '同调飞行控制',
+    otherSkill: ['放置！三角加速', '羁绊之力'],
   },
-  // T2
-  黑羽: {
-    defaultSkill: '攀登高峰',
-    otherSkill: ['心灵扫描', '注定一抽'],
+  水产: {
+    defaultSkill: '鲨鱼的领域',
+    otherSkill: ['注定一抽', '羁绊之力'],
   },
-  邪心英雄: {
-    defaultSkill: '恶意神召',
-    otherSkill: ['霸王城显现', '支配邪恶之力'],
+  炎王: {
+    defaultSkill: '注定一抽',
+    otherSkill: ['心灵扫描', '羁绊之力'],
+  },
+  银河眼: {
+    defaultSkill: '银河光子',
+    otherSkill: ['心灵扫描', '羁绊之力'],
   },
   咒眼: {
     defaultSkill: '决斗餐',
@@ -31,29 +59,30 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '抽卡预感：低星',
     otherSkill: ['注定一抽', '无尽陷阱地狱', '羁绊之力'],
   },
-  电子龙: {
-    defaultSkill: '电子流派',
-    otherSkill: ['注定一抽'],
-  },
   白龙: {
     defaultSkill: '进化后的最强龙族',
     otherSkill: ['注定一抽'],
   },
-  运动员: {
-    defaultSkill: '抽卡预感：低星',
-    otherSkill: ['怪兽变身：进化', '羁绊之力', '心灵扫描', '注定一抽'],
+  重坑阿莱: {
+    defaultSkill: '叠放移除',
+    otherSkill: ['心灵扫描', '羁绊之力'],
   },
-  妖仙兽: {
-    defaultSkill: '羁绊之力',
-    otherSkill: ['注定一抽', '心灵扫描'],
+  三金: {
+    defaultSkill: '[任意场地]',
+    otherSkill: ['新生宇宙！', '心灵扫描', '羁绊之力'],
   },
-  机巧: {
-    defaultSkill: '强攻压制',
-    otherSkill: ['抽卡预感：低星', '羁绊之力', '心灵扫描'],
+  // T3
+  光暗: {
+    defaultSkill: '注定一抽',
+    otherSkill: ['生命值增加a', '墓穴大军', '墓地封印', '凡人的局限'],
   },
-  邪心盖亚: {
-    defaultSkill: '霸王城显现',
-    otherSkill: ['支配邪恶之力'],
+  流星龙: {
+    defaultSkill: '流星之路',
+    otherSkill: [],
+  },
+  黑羽: {
+    defaultSkill: '攀登高峰',
+    otherSkill: ['心灵扫描', '注定一抽'],
   },
   口吃: {
     defaultSkill: '抽卡预感：高星',
@@ -67,18 +96,35 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '恶魔共鸣',
     otherSkill: ['羁绊之力', '注定一抽'],
   },
-  // T3
-  光暗: {
-    defaultSkill: '注定一抽',
-    otherSkill: ['生命值增加a', '墓穴大军', '墓地封印', '凡人的局限'],
+  巨石遗物: {
+    defaultSkill: '仪式大师II',
+    otherSkill: ['仪式大师', '羁绊之力', '注定一抽'],
   },
-  流星龙: {
-    defaultSkill: '流星之路',
-    otherSkill: [],
+  孤独勇者: {
+    defaultSkill: '仪式大师II',
+    otherSkill: ['仪式大师', '羁绊之力', '注定一抽'],
   },
-  六武众: {
+  圣骑士: {
     defaultSkill: '羁绊之力',
-    otherSkill: ['注定一抽'],
+    otherSkill: ['战士的领域', '心灵扫描', '注定一抽'],
+  },
+  
+  // T4以下非主流
+  机巧: {
+    defaultSkill: '强攻压制',
+    otherSkill: ['抽卡预感：低星', '羁绊之力', '心灵扫描'],
+  },
+  邪心盖亚: {
+    defaultSkill: '霸王城显现',
+    otherSkill: ['支配邪恶之力'],
+  },
+  邪心英雄: {
+    defaultSkill: '恶意神召',
+    otherSkill: ['霸王城显现', '支配邪恶之力'],
+  },
+  运动员: {
+    defaultSkill: '抽卡预感：低星',
+    otherSkill: ['怪兽变身：进化', '羁绊之力', '心灵扫描', '注定一抽'],
   },
   龙骑兵团: {
     defaultSkill: '注定一抽',
@@ -92,11 +138,6 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '真红眼轮盘',
     otherSkill: ['心灵扫描', '羁绊之力'],
   },
-  黑魔导: {
-    defaultSkill: '羁绊之力',
-    otherSkill: ['注定一抽'],
-  },
-  
   堕天使: {
     defaultSkill: '注定一抽',
     otherSkill: ['生命值增加a', '强攻压制'],
@@ -247,9 +288,11 @@ export const allSkill = [
   '等级提升',
   '恶魔共鸣',
   '流星之路',
+  '放置！三角加速',
   // zexal
   '决斗餐',
   '鲨鱼的领域',
+  
 ];
 
 Object.keys(deckSkillDatabase).forEach((item) => {

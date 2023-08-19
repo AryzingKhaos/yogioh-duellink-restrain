@@ -115,11 +115,12 @@ const Analysis: FC<Props> = ({}) => {
   return <div className='big-box'>
     <div className="line-box">
       <div className="cell-box img-cell-box">
-        对手卡组可能卡：
+        对手卡组可能卡（主卡组）：
         <div className="img-box">
-          <img src={`../img/${deckName}可能卡.png`} alt="" />
+          <img src={`../img/${deckName}可能卡M.png`} alt="" />
         </div>
       </div>
+      
       {/* 这里暂时注释掉了，想明白怎么解释卡组之后再放开吧 */}
       {/* <div className="cell-box">
         我的卡组害怕：
@@ -130,6 +131,14 @@ const Analysis: FC<Props> = ({}) => {
         {deckFear(deckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
       </div> */}
       
+    </div>
+    <div className="line-box">
+      <div className="cell-box img-cell-box">
+        对手卡组可能卡（额外）：
+        <div className="img-box">
+          <img src={`../img/${deckName}可能卡E.png`} alt="" />
+        </div>
+      </div>
     </div>
     <div className="line-box">
       <div className="column-box">

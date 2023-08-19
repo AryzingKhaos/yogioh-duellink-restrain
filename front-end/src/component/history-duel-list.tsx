@@ -38,8 +38,8 @@ const HistoryDuelList: FC<Props> = () => {
           <td style={{width: 90}}>对手技能</td>
           <td>结果</td>
           <td>失误</td>
-          <td>modelId</td>
-          <td>时间</td>
+          <td style={{width: 70}}>modelId</td>
+          <td style={{width: 140}}>时间</td>
           <td>备注</td>
           <td>功能</td>
         </tr>

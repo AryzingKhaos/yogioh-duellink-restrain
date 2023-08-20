@@ -11,8 +11,8 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     otherSkill: ['羁绊之力', '心灵扫描', '抽卡预感：高星', '注定一抽', '神秘深渊'],
   },
   黑魔导: {
-    defaultSkill: '羁绊之力',
-    otherSkill: ['注定一抽'],
+    defaultSkill: '卡套上的玄机',
+    otherSkill: ['羁绊之力', '注定一抽'],
   },
   电子龙: {
     defaultSkill: '电子流派',
@@ -71,7 +71,15 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '[任意场地]',
     otherSkill: ['新生宇宙！', '心灵扫描', '羁绊之力'],
   },
+  不知火: {
+    defaultSkill: '生命增加a',
+    otherSkill: ['注定一抽', '心灵扫描', '羁绊之力'],
+  },
   // T3
+  先史遗产: {
+    defaultSkill: '连接异次元',
+    otherSkill: ['心灵扫描', '羁绊之力'],
+  },
   光暗: {
     defaultSkill: '注定一抽',
     otherSkill: ['生命值增加a', '墓穴大军', '墓地封印', '凡人的局限'],

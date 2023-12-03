@@ -6,9 +6,47 @@ interface deckAttribute {
 
 const deckSkillDatabase: Record<string, deckAttribute> = {
   // T1
+  圣夜: {
+    defaultSkill: '我也能决斗吗？',
+    otherSkill: ['希望的战士编号39', '心灵扫描', '生命值增加a', '天使的微笑', '墓地封印'],
+  },
+  星兹: {
+    defaultSkill: '等级调整',
+    otherSkill: ['注定一抽', '羁绊之力', '心灵扫描'],
+  },
+  机皇: {
+    defaultSkill: '机皇精致',
+    otherSkill: ['注定一抽', '羁绊之力', '心灵扫描'],
+  },
+  // T2
+  破坏剑: {
+    defaultSkill: '抽卡预感：低星',
+    otherSkill: ['注定一抽', '无尽陷阱地狱', '羁绊之力'],
+  },
+  水产: {
+    defaultSkill: '鲨鱼的领域',
+    otherSkill: ['注定一抽', '羁绊之力'],
+  },
+  流星龙: {
+    defaultSkill: '流星之路',
+    otherSkill: [],
+  },
+  黑羽: {
+    defaultSkill: '攀登高峰',
+    otherSkill: ['心灵扫描', '注定一抽'],
+  },
+  口吃: {
+    defaultSkill: '抽卡预感：高星',
+    otherSkill: ['羁绊之力', '心灵扫描', '注定一抽'],
+  },
+  // T3
   水晶机巧: {
     defaultSkill: '化学反应',
     otherSkill: ['羁绊之力', '心灵扫描', '抽卡预感：高星', '注定一抽', '神秘深渊'],
+  },
+  白龙: {
+    defaultSkill: '进化后的最强龙族',
+    otherSkill: ['注定一抽'],
   },
   黑魔导: {
     defaultSkill: '卡套上的玄机',
@@ -30,7 +68,6 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '羁绊之力',
     otherSkill: ['注定一抽', '心灵扫描'],
   },
-  // T2
   新宇侠: {
     defaultSkill: '新生宇宙！',
     otherSkill: ['心灵扫描', '羁绊之力'],
@@ -39,29 +76,9 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '同调飞行控制',
     otherSkill: ['放置！三角加速', '羁绊之力'],
   },
-  水产: {
-    defaultSkill: '鲨鱼的领域',
-    otherSkill: ['注定一抽', '羁绊之力'],
-  },
   炎王: {
     defaultSkill: '注定一抽',
     otherSkill: ['心灵扫描', '羁绊之力'],
-  },
-  银河眼: {
-    defaultSkill: '银河光子',
-    otherSkill: ['心灵扫描', '羁绊之力'],
-  },
-  咒眼: {
-    defaultSkill: '决斗餐',
-    otherSkill: ['侵掠如火！', '不动如地！', '侵掠如火！', '其徐如水！', '其疾如风！'],
-  },
-  破坏剑: {
-    defaultSkill: '抽卡预感：低星',
-    otherSkill: ['注定一抽', '无尽陷阱地狱', '羁绊之力'],
-  },
-  白龙: {
-    defaultSkill: '进化后的最强龙族',
-    otherSkill: ['注定一抽'],
   },
   重坑阿莱: {
     defaultSkill: '叠放移除',
@@ -75,27 +92,11 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '生命增加a',
     otherSkill: ['注定一抽', '心灵扫描', '羁绊之力'],
   },
-  // T3
   先史遗产: {
     defaultSkill: '连接异次元',
     otherSkill: ['心灵扫描', '羁绊之力'],
   },
-  光暗: {
-    defaultSkill: '注定一抽',
-    otherSkill: ['生命值增加a', '墓穴大军', '墓地封印', '凡人的局限'],
-  },
-  流星龙: {
-    defaultSkill: '流星之路',
-    otherSkill: [],
-  },
-  黑羽: {
-    defaultSkill: '攀登高峰',
-    otherSkill: ['心灵扫描', '注定一抽'],
-  },
-  口吃: {
-    defaultSkill: '抽卡预感：高星',
-    otherSkill: ['羁绊之力', '心灵扫描', '注定一抽'],
-  },
+  
   守墓: {
     defaultSkill: '心灵扫描',
     otherSkill: ['羁绊之力', '注定一抽'],
@@ -300,7 +301,10 @@ export const allSkill = [
   // zexal
   '决斗餐',
   '鲨鱼的领域',
-  
+  '希望的战士编号39',
+  '机皇精致',
+  '我也能决斗吗？',
+  '等级调整',
 ];
 
 Object.keys(deckSkillDatabase).forEach((item) => {

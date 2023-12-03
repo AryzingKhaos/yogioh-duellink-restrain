@@ -4,6 +4,7 @@ import requestUtil from '../server';
 import DuelRecordOne from './duel-record-one';
 import { useGlobalData } from '../hooks/useGlobalData';
 import { effectRestrainDeck, deckFear } from '../constant/effect-restrain-deck';
+import battleAnalysisDatabaseHash from '../constant/battle-analysis-database';
 // import { deckCountermeasure } from '../constant/deck-countermeasures';
 import { Select } from 'antd';
 import { isDef, pureReverse } from '../utils/utils';
@@ -37,7 +38,7 @@ const analysisSessionsArray: analysisSessionsOne[] = [
 ];
 
 interface FrequencyHistoryArrayOne{
-  deckName: string;
+  oppoDeckName: string;
   frequency: number;
 }
 
@@ -55,7 +56,7 @@ const Analysis: FC<Props> = ({}) => {
     setHistoryDuelArray,
     myDeckName,
     setMyDeckName,
-    deckName,
+    deckName: oppoDeckName,
     setDeckName
   } = useGlobalData();
 
@@ -85,9 +86,9 @@ const Analysis: FC<Props> = ({}) => {
 
   const analysisHistoryFrequency = useMemo(() => {
     return calcHistoryArray.reduce((arr: FrequencyHistoryArrayOne[], item) => {
-      const result = arr.find((_item: FrequencyHistoryArrayOne) => _item.deckName === item.deckName);
+      const result = arr.find((_item: FrequencyHistoryArrayOne) => _item.oppoDeckName === item.oppoDeckName);
       if (!result) arr.push({
-        deckName: item.deckName,
+        oppoDeckName: item.oppoDeckName,
         frequency: 1,
       });
       else result.frequency += 1;
@@ -98,7 +99,7 @@ const Analysis: FC<Props> = ({}) => {
 
   const analysisHistoryFear = useMemo(() => {
     return analysisHistoryFrequency.map(item => {
-      return new Array(item.frequency).fill(null).map(_ => deckFear(item.deckName)).flat();
+      return new Array(item.frequency).fill(null).map(_ => deckFear(item.oppoDeckName)).flat();
     }).flat().reduce((arr: FearHistoryArrayOne[], item: any[]) => {
       const result = arr.find((_item: FearHistoryArrayOne) => item[0] === _item.fearAttribute);
       if (!result) arr.push({
@@ -111,13 +112,34 @@ const Analysis: FC<Props> = ({}) => {
   }, [analysisHistoryFrequency]);
 
   console.log('analysisHistoryFear', analysisHistoryFear);
+  
+  const battleAnalysisDataTextArray = useMemo(() => {
+    if (!battleAnalysisDatabaseHash[myDeckName]) {
+      return [''];
+    }
+    if (!battleAnalysisDatabaseHash[myDeckName][oppoDeckName]) {
+      return [''];
+    }
+    console.log('battleAnalysisDataTextArray:', battleAnalysisDatabaseHash[myDeckName][oppoDeckName]);
+    return battleAnalysisDatabaseHash[myDeckName][oppoDeckName];
+  }, [myDeckName, oppoDeckName]);
 
   return <div className='big-box'>
+    <div className="line-box">
+      <div className="column-box">
+        <div className="cell-box" style={{width: '100%'}}>
+          对战分析:
+          <ul className="text">
+            {battleAnalysisDataTextArray.map((item, index) => (<li key={item || index}>{item}</li>))}
+          </ul>
+        </div>
+      </div>
+    </div>
     <div className="line-box">
       <div className="cell-box img-cell-box">
         对手卡组可能卡（主卡组）：
         <div className="img-box">
-          <img src={`../img/${deckName}可能卡M.png`} alt="" />
+          <img src={`../img/${oppoDeckName}可能卡M.png`} alt="" />
         </div>
       </div>
       
@@ -128,7 +150,7 @@ const Analysis: FC<Props> = ({}) => {
       </div>
       <div className="cell-box">
         对手卡组害怕：
-        {deckFear(deckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
+        {deckFear(oppoDeckName).map((item, index) =>(<p key={index}>{`${item[0]}：${item[1]}` }</p>))}
       </div> */}
       
     </div>
@@ -136,7 +158,7 @@ const Analysis: FC<Props> = ({}) => {
       <div className="cell-box img-cell-box">
         对手卡组可能卡（额外）：
         <div className="img-box">
-          <img src={`../img/${deckName}可能卡E.png`} alt="" />
+          <img src={`../img/${oppoDeckName}可能卡E.png`} alt="" />
         </div>
       </div>
     </div>
@@ -152,12 +174,12 @@ const Analysis: FC<Props> = ({}) => {
         <div className="line-box">
           <div className="cell-box">
             卡组出现频次：
-            {analysisHistoryFrequency && analysisHistoryFrequency.map((item: any) => (<p key={item.deckName}>{`${item.deckName}：${item.frequency}`}</p>))}
+            {analysisHistoryFrequency && analysisHistoryFrequency.map((item: any, index) => (<p key={index}>{`${item.oppoDeckName}：${item.frequency}`}</p>))}
           </div>
-          <div className="cell-box">
+          {/* <div className="cell-box">
             卡组害怕程度 x 频次：
             {analysisHistoryFear.map((item) =>(<p key={item.fearAttribute}>{`${item.fearAttribute}：${item.score}` }</p>))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

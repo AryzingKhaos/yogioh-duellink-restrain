@@ -1,18 +1,21 @@
 .big-box{
-  margin: 0 20px;
+  margin: 20px;
+  margin-top: 0;
+  padding-top: 1px;
   display: flex;
   flex-direction: column;
   width: calc(100% - 950px);
 }
 .line-box{
-  margin-top: 20px;
+  /* margin: 10px 0; */
+  padding: 10px 0;
   display: flex;
   width: 100%;
-  
+  border-bottom: #1890ff 1px solid;
 }
-.line-box:first-child {
+/* .line-box:first-child {
   margin-top: 0;
-}
+} */
 .column-box{
   display: flex;
   flex-direction: column;
@@ -21,7 +24,7 @@
 .cell-box{
   /* padding: 20px; */
   width: 25%;
-  border-bottom: #1890ff 1px solid;
+  /* border-bottom: #1890ff 1px solid; */
   align-items: center;
 }
 .img-cell-box{

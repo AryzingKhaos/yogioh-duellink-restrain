@@ -129,7 +129,7 @@ const Analysis: FC<Props> = ({}) => {
       <div className="column-box">
         <div className="cell-box" style={{width: '100%'}}>
           对战分析:
-          <ul className="text">
+          <ul className="battle-analysis-text">
             {battleAnalysisDataTextArray.map((item, index) => (<li key={item || index}>{item}</li>))}
           </ul>
         </div>

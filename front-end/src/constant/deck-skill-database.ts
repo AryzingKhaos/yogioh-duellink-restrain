@@ -27,8 +27,20 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
     defaultSkill: '鲨鱼的领域',
     otherSkill: ['注定一抽', '羁绊之力'],
   },
+  化石: {
+    defaultSkill: '古生代的化石骑士',
+    otherSkill: [],
+  },
+  光天使: {
+    defaultSkill: '古生代的化石骑士',
+    otherSkill: [],
+  },
   流星龙: {
     defaultSkill: '流星之路',
+    otherSkill: [],
+  },
+  盖亚: {
+    defaultSkill: '走向龙骑士之路',
     otherSkill: [],
   },
   黑羽: {
@@ -37,6 +49,10 @@ const deckSkillDatabase: Record<string, deckAttribute> = {
   },
   口吃: {
     defaultSkill: '抽卡预感：高星',
+    otherSkill: ['羁绊之力', '心灵扫描', '注定一抽'],
+  },
+  甘多拉: {
+    defaultSkill: '战斗的决心',
     otherSkill: ['羁绊之力', '心灵扫描', '注定一抽'],
   },
   // T3
@@ -259,6 +275,8 @@ export const allSkill = [
   '墓地封印',
   '中世纪机械',
   '进化后的最强龙族',
+  '走向龙骑士之路',
+  '战斗的决心',
   // 场地
   '神鹰狩猎场',
   '神秘深渊',
@@ -305,6 +323,7 @@ export const allSkill = [
   '机皇精致',
   '我也能决斗吗？',
   '等级调整',
+  '古生代的化石骑士',
 ];
 
 Object.keys(deckSkillDatabase).forEach((item) => {

@@ -46,3 +46,7 @@
 .no-border{
   border: none;
 }
+.battle-analysis-text{
+  margin-top: 5px;
+  color: #0159ac;
+}

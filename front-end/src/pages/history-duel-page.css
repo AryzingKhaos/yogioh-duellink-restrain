@@ -1,4 +1,95 @@
+.history-duel-page {
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
 .main-area{
   display: flex;
-  /* justify-content: space-between; */
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.content-section {
+  flex: 1;
+  background: rgba(23, 25, 35, 0.85);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #e0e0e0;
+}
+
+.content-section:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.section-header {
+  background: linear-gradient(135deg, #0f3460 0%, #533483 100%);
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: "📊";
+  font-size: 16px;
+}
+
+.section-content {
+  padding: 24px;
+  min-height: 400px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .main-area {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .content-section {
+    min-height: 300px;
+  }
+
+  .section-header {
+    padding: 16px 20px;
+  }
+
+  .section-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-area {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .section-header {
+    padding: 14px 16px;
+  }
+
+  .section-content {
+    padding: 16px;
+  }
 }
